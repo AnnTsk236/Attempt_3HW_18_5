@@ -7,7 +7,7 @@ public:
 	Player() // дефолтный конструктор
 	{
 		name = "Default";
-		score = 777;
+		score = 1000;
 	}
 
 	Player(std::string N, int S) 	// конструктор для заполнения переменных
@@ -20,7 +20,7 @@ public:
 
 	void Show()
 	{
-		std::cout << "Player name: " << name << "Player score: " << score << std::endl;
+		std::cout << "Player name: " << name << " " << "Player score: " << score << std::endl;
 	}
 
 };
@@ -38,22 +38,22 @@ int main()
 		int localScore;
 		std::string localName;
 
-		std::cout << "Input name: " << std::endl;
+		std::cout << "Enter name player: " << std::endl;
 		std::cin >> localName;
-		std::cout << "Input score: " << std::endl;
+		std::cout << "Enter score player: " << std::endl;
 		std::cin >> localScore;
 
 		Players[i] = *new Player(localName, localScore);
 	}
 
-
-	for (int j = 1; j < Players; j++) //Массив на увеличение
+	//Пузырьковая сортировка 
+	for (int j = 1; j < x; j++) //Массив на увеличение
 	{
-		for (int r = 1; r < Players; r >= j; r--) //Массив на убывание 
+		for (int r = x-1; r >= j; r--) //Массив на убывание 
 		{
-			if (Players[r - 1].score > Players[r].score) // Меняем местами 
+			if (Players[r - 1].score < Players[r].score) // Меняем местами если 
 			{
-				Players temp = Players[r - 1];
+				Player temp = Players[r - 1]; //Временная переменная объявленная внутри цикла
 				Players[r - 1] = Players[r];
 				Players[r] = temp;
 			}
@@ -61,12 +61,15 @@ int main()
 	}
 
 	std::cout << "\n";
+	std::cout <<  "Score board from leader to lowest: " << "\n";
 	
 
-	for (int i = 0; i < Players; ++i) // Вывод массива 
+	for (int i = 0; i < x; ++i) // Вывод массива 
 	{
 		Players[i].Show();
 	}
+
+	delete[] Players;
 
 	return 0;
 
