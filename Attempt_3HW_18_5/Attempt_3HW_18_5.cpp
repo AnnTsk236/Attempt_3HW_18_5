@@ -46,7 +46,6 @@ int main()
 		Players[i] = *new Player(localName, localScore);
 	}
 
-	Players temp;
 
 	for (int j = 1; j < Players; j++) //Массив на увеличение
 	{
@@ -69,9 +68,8 @@ int main()
 		Players[i].Show();
 	}
 
-
-
 	return 0;
+
 }
 
 
